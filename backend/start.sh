@@ -1,6 +1,22 @@
 #!/bin/bash
 set -euo pipefail
 
+ort_installed=0
+for attempt in 1 2 3; do
+  if pip install --no-cache-dir onnxruntime-gpu==1.19.2 -i https://pypi.tuna.tsinghua.edu.cn/simple; then
+    ort_installed=1
+    break
+  fi
+  if [ "$attempt" -lt 3 ]; then
+    echo "onnxruntime-gpu install failed, retry ${attempt}/2" >&2
+    sleep 2
+  fi
+done
+if [ "$ort_installed" -ne 1 ]; then
+  echo "onnxruntime-gpu install failed after 2 retries" >&2
+  exit 1
+fi
+
 mkdir -p /data/work /data
 export CUDA_VISIBLE_DEVICES="${GPU_DEVICE_ID:-0}"
 export PYTHONPATH="/app${PYTHONPATH:+:$PYTHONPATH}"

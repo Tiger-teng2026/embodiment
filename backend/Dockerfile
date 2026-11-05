@@ -21,12 +21,10 @@ RUN apt-get update \
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install --no-cache-dir onnxruntime-gpu==1.19.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN git clone --depth 1 https://github.com/KlingAIResearch/LivePortrait.git /opt/LivePortrait \
     && pip install --no-cache-dir -r /opt/LivePortrait/requirements_base.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
-    && pip install --no-cache-dir onnxruntime-gpu==1.19.2 -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && huggingface-cli download KlingTeam/LivePortrait \
         --local-dir /opt/LivePortrait/pretrained_weights \
         --exclude "*.git*" "README.md" "docs" \
