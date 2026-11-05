@@ -1,0 +1,153 @@
+{
+  "app": {
+    "name": "化身",
+    "nameEn": "Embodiment",
+    "tagline": "Talking portraits, your own voice",
+    "watermark": "化身 Embodiment AI合成内容"
+  },
+  "nav": {
+    "create": "Create",
+    "history": "History",
+    "logout": "Log out"
+  },
+  "lang": {
+    "zh": "中文",
+    "en": "English",
+    "switchLabel": "Language"
+  },
+  "common": {
+    "loading": "Loading"
+  },
+  "footer": {
+    "agreement": "Use notes and synthetic-content notice"
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Private login. Audio is muxed as-is and is never synthesized.",
+    "username": "Username",
+    "password": "Password",
+    "action": "Enter"
+  },
+  "create": {
+    "title": "New talking portrait",
+    "intro": "Upload a portrait and your own mp3. Only the picture is driven. The voice stays the original file.",
+    "modeTitle": "How to generate",
+    "modeOriginal": "Keep the selfie background",
+    "modeOriginalDesc": "Keep the background in the photo and drive the mouth with your original audio.",
+    "modePreset": "Preset scene",
+    "modePresetDesc": "Cut the person out, place them in a chosen scene, then drive the mouth with your original audio.",
+    "templateTitle": "Scene template",
+    "templateHint": "Choose a preset scene.",
+    "portraitTitle": "Portrait",
+    "portraitHint": "JPG, PNG, or WEBP, up to {{size}} MB. Front-facing, with clear features.",
+    "portraitAction": "Choose photo",
+    "audioTitle": "Original audio",
+    "audioHint": "MP3 only, up to {{max}} seconds. The file is muxed unchanged: no voice change, cloning, or speech synthesis.",
+    "audioAction": "Choose MP3",
+    "audioDuration": "Duration {{seconds}} s",
+    "fileReady": "Selected {{name}}",
+    "offsetTitle": "Lip-sync offset",
+    "offsetHint": "Negative moves the voice earlier. Positive delays it. This only shifts the start, not the voice.",
+    "offsetValue": "{{value}} ms",
+    "agreementLabel": "I have the right to use this portrait and audio, and I understand the video is a synthetic picture with a fixed watermark and AI metadata.",
+    "agreementLink": "Read the full note",
+    "submit": "Generate",
+    "submitting": "Submitting",
+    "pipelineNote": "Until the models are connected, the file is a still picture plus your original audio, the watermark, and AI metadata. That path checks the queue and storage. Lip motion and background removal start after LivePortrait and rembg are mounted.",
+    "watermarkNote": "Watermark on the video: {{text}}"
+  },
+  "history": {
+    "title": "Task history",
+    "intro": "Latest {{count}}.",
+    "empty": "No tasks yet.",
+    "refresh": "Refresh",
+    "download": "Download video",
+    "downloading": "Getting link",
+    "duration": "Audio {{seconds}} s",
+    "offset": "Offset {{value}} ms",
+    "created": "Created {{time}}",
+    "pair": "{{label}}: {{value}}",
+    "id": "Task {{id}}",
+    "openCreate": "Create one",
+    "mode": "Mode",
+    "template": "Scene"
+  },
+  "status": {
+    "queued": "Queued",
+    "processing": "Processing",
+    "succeeded": "Done",
+    "failed": "Failed"
+  },
+  "modes": {
+    "original_bg": "Original background",
+    "preset_scene": "Preset scene"
+  },
+  "templates": {
+    "studio_soft": {
+      "title": "Soft studio",
+      "desc": "Neutral light for a front-facing portrait."
+    },
+    "office_day": {
+      "title": "Daylight office",
+      "desc": "Cool daylight by a window."
+    },
+    "city_night": {
+      "title": "City night",
+      "desc": "Dark backdrop with a night skyline."
+    },
+    "home_warm": {
+      "title": "Warm home",
+      "desc": "Warm indoor light."
+    }
+  },
+  "agreement": {
+    "title": "Use notes and synthetic-content notice",
+    "intro": "Embodiment (化身) makes talking portraits from your own voice. This version is for private use. Subscriptions come later.",
+    "s1Title": "What you upload",
+    "s1Body": "Upload only portraits and audio you have the right to use. Do not upload someone else's face or recording unless they have allowed it.",
+    "s2Title": "How audio is handled",
+    "s2Body": "Audio passes through. The system does not synthesize speech, clone a voice, or rewrite the recording. The voice in the video is your mp3. Lip-sync offset only moves where the sound starts against the picture.",
+    "s3Title": "How the picture is handled",
+    "s3Body": "The picture is driven from the photo. You can keep the selfie background, or place the person in a preset scene. The video burns in the watermark “化身 Embodiment AI合成内容” and marks the file metadata as AI-generated.",
+    "s4Title": "Length limit",
+    "s4Body": "Each video is at most 30 seconds. Longer audio is stopped on the page and is not queued.",
+    "s5Title": "Account and subscription",
+    "s5Body": "Login is private. There is no public sign-up. Billing and multiple accounts will be added in a later version.",
+    "s6Title": "Your responsibility",
+    "s6Body": "You are responsible for what you upload and how you use the result. Do not present it as a live appearance, and do not strip the synthetic-content label before sharing it."
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "action": "Back to create"
+  },
+  "errors": {
+    "UNKNOWN": "That did not finish. Try again shortly.",
+    "NETWORK": "The service is unreachable. Check that the API is running.",
+    "UNAUTHORIZED": "The login expired. Sign in again.",
+    "INVALID_CREDENTIALS": "The username or password is wrong.",
+    "MISSING_FIELDS": "Enter a username and password.",
+    "MODE_INVALID": "Choose a generation mode.",
+    "TEMPLATE_REQUIRED": "Choose a scene template.",
+    "TEMPLATE_UNKNOWN": "That scene template is not available.",
+    "OFFSET_OUT_OF_RANGE": "The lip-sync offset is outside the allowed range.",
+    "IMAGE_REQUIRED": "Upload a portrait.",
+    "IMAGE_INVALID": "That photo format is not supported. Use JPG, PNG, or WEBP.",
+    "IMAGE_TOO_LARGE": "The photo is over {{size}} MB.",
+    "AUDIO_REQUIRED": "Upload an MP3.",
+    "AUDIO_INVALID": "This audio could not be read. Choose another MP3.",
+    "AUDIO_TYPE": "Only MP3 is accepted.",
+    "AUDIO_TOO_LONG": "The audio is over {{max}} seconds (this file is {{seconds}} seconds). Trim it to 30 seconds or less.",
+    "AUDIO_TOO_LARGE": "The audio is over {{size}} MB.",
+    "AGREEMENT_REQUIRED": "Confirm the use note first.",
+    "FILE_TOO_LARGE": "The file is too large.",
+    "TASK_NOT_FOUND": "That task was not found.",
+    "OUTPUT_NOT_READY": "The video is not ready yet.",
+    "QUEUE_UNAVAILABLE": "The queue is unavailable. Check that Redis and Celery are running.",
+    "STORAGE_UNAVAILABLE": "Object storage is unavailable. Check that MinIO is running.",
+    "FFMPEG_MISSING": "ffmpeg was not found on the server.",
+    "FONT_MISSING": "The server has no font that can draw the Chinese watermark.",
+    "INFERENCE_FAILED": "Generation failed. Check the photo, the audio, and ffmpeg.",
+    "RUNPOD_NOT_CONFIGURED": "Runpod is selected, but the endpoint is not configured.",
+    "RUNPOD_FAILED": "Runpod did not return a video."
+  }
+}

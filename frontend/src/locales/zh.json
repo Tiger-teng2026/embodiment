@@ -1,0 +1,153 @@
+{
+  "app": {
+    "name": "化身",
+    "nameEn": "Embodiment",
+    "tagline": "原声数字人口播",
+    "watermark": "化身 Embodiment AI合成内容"
+  },
+  "nav": {
+    "create": "创建",
+    "history": "历史",
+    "logout": "退出"
+  },
+  "lang": {
+    "zh": "中文",
+    "en": "English",
+    "switchLabel": "语言"
+  },
+  "common": {
+    "loading": "加载中"
+  },
+  "footer": {
+    "agreement": "使用说明与合成内容声明"
+  },
+  "login": {
+    "title": "登录",
+    "subtitle": "自用入口。音频只做原样混流，不合成人声。",
+    "username": "用户名",
+    "password": "密码",
+    "action": "进入"
+  },
+  "create": {
+    "title": "新建口播",
+    "intro": "上传一张人像和你自己的 mp3。只驱动画面，人声保持原文件。",
+    "modeTitle": "生成方式",
+    "modeOriginal": "沿用自拍原图背景口播",
+    "modeOriginalDesc": "保留照片里的背景，用原声音频驱动口型。",
+    "modePreset": "预设场景模板",
+    "modePresetDesc": "人像抠图后合成到选定场景，再用原声音频驱动口型。",
+    "templateTitle": "场景模板",
+    "templateHint": "选择一个预设场景。",
+    "portraitTitle": "人像照片",
+    "portraitHint": "JPG、PNG 或 WEBP，最大 {{size}} MB。正脸、五官清晰。",
+    "portraitAction": "选择照片",
+    "audioTitle": "原声音频",
+    "audioHint": "仅 MP3，最长 {{max}} 秒。文件会原样混入成片，不做变声、克隆或语音合成。",
+    "audioAction": "选择 MP3",
+    "audioDuration": "时长 {{seconds}} 秒",
+    "fileReady": "已选择 {{name}}",
+    "offsetTitle": "口型时间偏移",
+    "offsetHint": "负值让声音提前，正值让声音延后。只改声画起点，不改音色。",
+    "offsetValue": "{{value}} 毫秒",
+    "agreementLabel": "我确认对上传的人像和音频拥有使用权，并了解成片是 AI 合成画面，会带固定水印和合成元数据。",
+    "agreementLink": "查看完整说明",
+    "submit": "开始生成",
+    "submitting": "正在提交",
+    "pipelineNote": "模型未接入前，成片是静帧画面加原声音频、水印和 AI 合成元数据，用来打通队列与存储。LivePortrait 与 rembg 接上后才会驱动口型、抠出人像。",
+    "watermarkNote": "成片水印：{{text}}"
+  },
+  "history": {
+    "title": "任务历史",
+    "intro": "最近 {{count}} 条。",
+    "empty": "还没有任务。",
+    "refresh": "刷新",
+    "download": "下载视频",
+    "downloading": "获取链接",
+    "duration": "音频 {{seconds}} 秒",
+    "offset": "偏移 {{value}} 毫秒",
+    "created": "创建于 {{time}}",
+    "pair": "{{label}}：{{value}}",
+    "id": "任务 {{id}}",
+    "openCreate": "去创建",
+    "mode": "方式",
+    "template": "场景"
+  },
+  "status": {
+    "queued": "排队中",
+    "processing": "处理中",
+    "succeeded": "已完成",
+    "failed": "失败"
+  },
+  "modes": {
+    "original_bg": "原图背景",
+    "preset_scene": "预设场景"
+  },
+  "templates": {
+    "studio_soft": {
+      "title": "柔光棚拍",
+      "desc": "中性柔光，适合正面人像。"
+    },
+    "office_day": {
+      "title": "日间办公室",
+      "desc": "冷色白天，窗边办公。"
+    },
+    "city_night": {
+      "title": "城市夜景",
+      "desc": "深色背景，夜景轮廓。"
+    },
+    "home_warm": {
+      "title": "暖色居家",
+      "desc": "暖光室内。"
+    }
+  },
+  "agreement": {
+    "title": "使用说明与合成内容声明",
+    "intro": "化身 Embodiment 是原声数字人口播工具。当前版本供自用，后续再开放订阅。",
+    "s1Title": "你上传的内容",
+    "s1Body": "请只上传你有权使用的人像照片和音频。不要上传他人的肖像或录音，除非你已经获得授权。",
+    "s2Title": "音频怎么处理",
+    "s2Body": "音频透传。系统不进行语音合成，不做音色克隆，也不改写人声。成片中的声音来自你上传的 mp3。口型时间偏移只调整声音与画面的起点。",
+    "s3Title": "画面怎么处理",
+    "s3Body": "画面由照片驱动生成。你可以沿用自拍原图背景，或把人像合成到预设场景。成片会烧录水印“化身 Embodiment AI合成内容”，并在文件元数据中标记为 AI 合成内容。",
+    "s4Title": "时长限制",
+    "s4Body": "单段视频最长 30 秒。超出后页面会直接拦截，不会进入队列。",
+    "s5Title": "账号与订阅",
+    "s5Body": "现在是自用登录，不提供公开注册。订阅、计费和多用户会在后续版本单独接入。",
+    "s6Title": "使用责任",
+    "s6Body": "你需要为上传内容和成片的使用方式负责。不要用它冒充真人实时出镜，也不要去掉合成标识后再传播。"
+  },
+  "notFound": {
+    "title": "页面不存在",
+    "action": "返回创建"
+  },
+  "errors": {
+    "UNKNOWN": "操作没有完成，请稍后重试。",
+    "NETWORK": "无法连接服务，请确认后端已启动。",
+    "UNAUTHORIZED": "登录已失效，请重新登录。",
+    "INVALID_CREDENTIALS": "用户名或密码不正确。",
+    "MISSING_FIELDS": "请填写用户名和密码。",
+    "MODE_INVALID": "请选择一种生成方式。",
+    "TEMPLATE_REQUIRED": "请选择一个场景模板。",
+    "TEMPLATE_UNKNOWN": "这个场景模板不可用。",
+    "OFFSET_OUT_OF_RANGE": "口型偏移超出可调范围。",
+    "IMAGE_REQUIRED": "请上传人像照片。",
+    "IMAGE_INVALID": "照片格式不支持，请使用 JPG、PNG 或 WEBP。",
+    "IMAGE_TOO_LARGE": "照片超过 {{size}} MB。",
+    "AUDIO_REQUIRED": "请上传 MP3 音频。",
+    "AUDIO_INVALID": "无法读取这段音频，请换一个 MP3。",
+    "AUDIO_TYPE": "只接受 MP3。",
+    "AUDIO_TOO_LONG": "音频超过 {{max}} 秒，当前 {{seconds}} 秒。请裁到 30 秒以内。",
+    "AUDIO_TOO_LARGE": "音频超过 {{size}} MB。",
+    "AGREEMENT_REQUIRED": "请先勾选使用说明。",
+    "FILE_TOO_LARGE": "文件太大。",
+    "TASK_NOT_FOUND": "没有找到这个任务。",
+    "OUTPUT_NOT_READY": "视频还没有准备好。",
+    "QUEUE_UNAVAILABLE": "任务队列不可用，请确认 Redis 和 Celery 已启动。",
+    "STORAGE_UNAVAILABLE": "对象存储不可用，请确认 MinIO 已启动。",
+    "FFMPEG_MISSING": "服务器未找到 ffmpeg。",
+    "FONT_MISSING": "服务器缺少可绘制中文水印的字体。",
+    "INFERENCE_FAILED": "生成失败。请检查照片、音频和 ffmpeg。",
+    "RUNPOD_NOT_CONFIGURED": "已切换到 Runpod，但端点尚未配置。",
+    "RUNPOD_FAILED": "Runpod 推理没有返回成片。"
+  }
+}
