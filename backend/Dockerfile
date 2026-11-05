@@ -1,4 +1,4 @@
-# RTX 4090 pod. Torch comes from the base image; do not pip-install a CPU torch over it.
+# RTX 4090 pod. Torch comes from the base image
 FROM pytorch/pytorch:2.4.1-cuda12.4-cudnn9-runtime
 
 ARG HF_ENDPOINT=https://huggingface.co
@@ -13,7 +13,6 @@ RUN apt-get update \
         ffmpeg \
         git \
         redis-server \
-        fonts-noto-cjk \
         libgl1 \
         libglib2.0-0 \
         ca-certificates \
@@ -21,7 +20,8 @@ RUN apt-get update \
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# 重点： insightface 改用官方预编译 wheel 包，不需要 g++ 编译
+RUN pip install --no-cache-dir "insightface==0..7.3" --only-binary=:all: -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN git clone --depth 1 https://github.com/KlingAIResearch/LivePortrait.git /opt/LivePortrait \
     && pip install --no-cache-dir -r /opt/LivePortrait/requirements_base.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
