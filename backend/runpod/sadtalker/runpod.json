@@ -1,0 +1,21 @@
+{
+  "name": "embodiment-sadtalker",
+  "image": "your-registry/embodiment-sadtalker:latest",
+  "gpuTypeId": "NVIDIA A10G",
+  "gpuCount": 1,
+  "containerDiskInGb": 50,
+  "volumeInGb": 40,
+  "volumeMountPath": "/workspace",
+  "ports": ["8000/http"],
+  "dockerStartCmd": ["/opt/infer/start.sh"],
+  "env": {
+    "SADTALKER_MODEL_DIR": "/workspace/sadtalker",
+    "SADTALKER_OUTPUT_DIR": "/workspace/outputs",
+    "PORT": "8000",
+    "MAX_DURATION_SECONDS": "30",
+    "INFER_TIMEOUT_SECONDS": "180",
+    "SADTALKER_SIZE": "256",
+    "INFERENCE_API_KEY": "",
+    "PUBLIC_BASE_URL": ""
+  }
+}

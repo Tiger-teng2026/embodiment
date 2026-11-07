@@ -1,0 +1,87 @@
+name: Build SadTalker image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - build/sadtalker-a10g
+    paths:
+      - "backend/runpod/sadtalker/**"
+      - ".github/workflows/build-sadtalker.yml"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Docker Hub secrets
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "Missing DOCKERHUB_USERNAME or DOCKERHUB_TOKEN."
+            exit 1
+          fi
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+            /usr/local/share/powershell /usr/share/swift /usr/local/.ghcup
+          sudo apt-get clean
+          docker system prune -af
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: backend/runpod/sadtalker
+          file: backend/runpod/sadtalker/Dockerfile
+          push: true
+          provenance: false
+          sbom: false
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/embodiment-sadtalker:a10g
+
+      - name: Verify image contents
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        run: |
+          set -eu
+          image="${DOCKERHUB_USERNAME}/embodiment-sadtalker:a10g"
+          docker pull "$image"
+          docker run --rm --entrypoint bash "$image" -lc "set -eu
+          ffmpeg -version | head -n 1
+          python3 -c 'import torch; v=torch.__version__; c=str(torch.version.cuda); assert v.startswith(\"2.1.2\"), v; assert c.startswith(\"12.1\"), c; print(\"TORCH\", v); print(\"TORCH_CUDA\", c)'
+          test -d /usr/local/cuda-12.1
+          echo CUDA_DIR=12.1
+          test -s /opt/sadtalker-weights/checkpoints/SadTalker_V0.0.2_256.safetensors
+          test -s /opt/sadtalker-weights/checkpoints/SadTalker_V0.0.2_512.safetensors
+          test -s /opt/sadtalker-weights/checkpoints/mapping_00109-model.pth.tar
+          test -s /opt/sadtalker-weights/checkpoints/mapping_00229-model.pth.tar
+          ls -lh /opt/sadtalker-weights/checkpoints
+          grep -F /workspace/sadtalker /opt/infer/start.sh
+          echo START_SH=volume-first
+          echo VERIFY_OK
+          " | tee verify.txt
+          printf '%s\n' "$image" > image-name.txt
+
+      - name: Upload verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: sadtalker-image-check
+          path: |
+            image-name.txt
+            verify.txt
